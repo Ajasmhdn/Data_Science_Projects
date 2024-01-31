@@ -1,0 +1,20 @@
+import pandas as pd
+import csv
+
+#read csv
+csv_file="https://raw.githubusercontent.com/codeforamerica/ohana-api/master/data/sample-csv/addresses.csv"
+df=pd.read_csv(csv_file)
+
+#null Set
+address=[]
+
+#iterate through each data
+for index,row in df.iterrows():
+  if(row['city']=="Redwood City"):
+    address.append(row['address_1'])
+#create the dictionary
+address_dict={"Address of the people living in Redwood city": address}
+#create the data frame
+address_dict_df=pd.DataFrame(address_dict)
+#cover to csv
+address_dict_df.to_csv("output2", index=False)
